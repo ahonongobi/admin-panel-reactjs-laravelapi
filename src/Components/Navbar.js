@@ -1,7 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
+toast.configure();
 
 export default function () {
+  let  navigate = useNavigate();
+  const logout = () => {
+    
+    localStorage.clear()
+    //setIsLoggedin(false);
+   // window.location.href = "/login";
+   
+   navigate("/login");
+    toast.success("Logout Successfully");
+  };
+  
   return (
     <div>
       <nav>
@@ -53,7 +67,7 @@ export default function () {
 
           <ul className="logout-mode">
             <li>
-              <a href="#">
+              <a onClickCapture={logout}>
                 <i className="uil uil-signout"></i>
                 <span className="link-name">Logout</span>
               </a>

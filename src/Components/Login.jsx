@@ -11,6 +11,7 @@ class Login extends Component {
         this.state = {
             email:"",
             password:"",
+            keep: "",
             isOK: false,
         }
         
@@ -19,7 +20,9 @@ class Login extends Component {
     
     async handleFormSubmit(e) {
         e.preventDefault();
-       
+        document.getElementById("submit").innerText = "Your are redirecting...";
+        document.getElementById("submit").disabled = true;
+
         let formData = new FormData();
         formData.append("email", this.state.email);
         formData.append("password", this.state.password);
@@ -32,20 +35,18 @@ class Login extends Component {
           config: { headers: { "Content-Type": "multipart/form-data" } }
         });
         if (res.data.status === 200) {
-          this.setState({
-            name: "",
-            password: "",
-            
-          });
-
+          
+          
           this.redirectToDashboard()          
-         // toast.success("New contact add successfully");
+         // toast.success("New contact add successfully"); Sign In
           //this.props.history.push({pathname: '/',state:'aret'})
         } else {
           this.setState({
             inputMsg: res.data.errorMessages
           });
           toast.warning("E-mail or Password incorrect");
+          document.getElementById("submit").innerText = "Sign In";
+          document.getElementById("submit").disabled = false;
         }
         
       }
@@ -53,10 +54,12 @@ class Login extends Component {
          
        
         //this.props.history.push({pathname: '/'})
-        this.props.history(
+        /**this.props.history(
             '/',
             {state: {email: this.state.email}},
-        )
+        ) **/
+        
+        setTimeout(() => {window.location.href = "/";} , 2000);
         localStorage.setItem('email', this.state.email);
         localStorage.setItem('token', true);
         console.log(this.state.email);
@@ -74,28 +77,28 @@ class Login extends Component {
             <div className="login-form">
                 <div className="sign-in-htm">
                     <div className="group">
-                        <label for="user" className="label">E-mail</label>
+                        <label htmlFor="user" className="label">E-mail</label>
                         <input  type="email" name='email'  value={this.state.email} onChange={(e)=> this.setState({email: e.target.value})} className="input" />
                         
                     </div>
                     <div className="group">
-                        <label for="pass" className="label">Password</label>
+                        <label htmlFor="pass" className="label">Password</label>
                         <input  type="password" name='password'  value={this.state.password} onChange={(e)=> this.setState({password: e.target.value})}  className="input" data-type="password" />
                         
                     </div>
                     <div className="group">
-                        <input id="check" type="checkbox" className="check" checked />
-                        <label for="check"><span className="icon"></span> Keep me Signed in</label>
+                        <input onChange={(e)=> this.setState({keep: e.target.value})}  id="check" type="checkbox" className="check" checked />
+                        <label htmlFor="check"><span className="icon"></span> Keep me Signed in</label>
                     </div>
                     <div className="group">
-                        <input type="submit" id='submit' onClick={(e)=>this.handleFormSubmit(e)} className="button" value="Sign In" />
+                        <button type="submit" id='submit' onClickCapture={(e)=>this.handleFormSubmit(e)} className="button">Sign In</button> 
                     </div>
                     <div className="hr"></div>
                     <div className="foot-lnk">
                         <a href="#forgot">Forgot Password?</a>
                     </div>
                 </div>
-                <div className="sign-up-htm">
+                {/**<div className="sign-up-htm">
                     <div className="group">
                         <label for="user" className="label">Username</label>
                         <input id="user" type="text" className="input" />
@@ -119,7 +122,7 @@ class Login extends Component {
                     <div className="foot-lnk">
                         <label for="tab-1">Already Member?</label>
                     </div>
-                </div>
+                </div> **/}
             </div>
         </div>
         

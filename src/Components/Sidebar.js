@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import {Navigate, Link } from 'react-router-dom'
 
 export default class Sidebar extends Component {
+  logout = () => {
+    localStorage.removeItem('token');
+    //setIsLoggedin(false);
+    <Navigate to="/login" />
+  };
   render() {
     return (
         <div>
@@ -54,7 +59,7 @@ export default class Sidebar extends Component {
   
             <ul className="logout-mode">
               <li>
-                <a href="#">
+                <a onClickCapture={this.logout}>
                   <i className="uil uil-signout"></i>
                   <span className="link-name">Logout</span>
                 </a>

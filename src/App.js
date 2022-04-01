@@ -15,9 +15,7 @@ import WithNav from './Components/WithNav';
 import ProtectedRoute from './Components/ProtectedRoute';
 
 function App({props}) {
-  const isLoggedIn = localStorage.getItem('isOk')
-  const removeisOk = localStorage.removeItem('isOk');
-  console.log(isLoggedIn);
+  
   return (
     <div>
        {/**<Router>

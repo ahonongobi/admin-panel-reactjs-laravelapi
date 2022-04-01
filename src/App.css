@@ -262,6 +262,10 @@ nav.close ~ .dashboard .top{
     font-weight: 400;
     outline: none;
 }
+.logout-mode{
+    
+    cursor: pointer;
+}
 .top .search-box i{
     position: absolute;
     left: 15px;
@@ -594,6 +598,7 @@ only screen and (max-width: 760px),
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
+    cursor: pointer;
 }
 .btn__save{
     background-color: #4da3ff !important;
