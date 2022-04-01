@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
+import Modale from "./Modal";
+
 toast.configure();
 
 export default class Table extends Component {
@@ -9,29 +12,31 @@ export default class Table extends Component {
     super(props);
     this.state = {
       contact: [],
+      show: false,
     };
   }
-  componentDidMount(){
+  componentDidMount() {
     this.getApiData();
-      this.intervale = setInterval(() => {
+     {/**this.intervale = setInterval(() => {
           this.getApiData()
-      }, 1000);
-
-      
+      }, 1000);  **/}
   }
-  componentWillUnmount(){
-      clearInterval(this.intervale)
+  componentWillUnmount() {
+    clearInterval(this.intervale);
   }
   getApiData() {
     const url = "http://localhost:8001/api/add";
-    axios.get(url).then((response) => {
-      this.setState({
-        contact: response.data,
+    axios
+      .get(url)
+      .then((response) => {
+        this.setState({
+          contact: response.data,
+        });
       })
-    }).catch((e) => console.log(e));
+      .catch((e) => console.log(e));
   }
 
-  handleClickDelete = async (e,id) =>{
+  handleClickDelete = async (e, id) => {
     const thidClickFounda = e.currentTarget;
     thidClickFounda.innerText = "Deleting...";
     const res = await axios.delete(
@@ -41,25 +46,27 @@ export default class Table extends Component {
       thidClickFounda.closest("tr").remove();
       toast.success("data deleted successfully");
     }
-
-  }
+  };
+   
   render() {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Country</th>
-            <th>City</th>
-            <th>Job</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+      <div className="wrap-table">
+        
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>E-mail</th>
+              <th>Country</th>
+              <th>City</th>
+              <th>Job</th>
+              <th>Action</th>
+            </tr>
+          </thead>
 
-        <tbody>
-            {this.state.contact.map((contact,index)=>(
-                <tr key={index}>
+          <tbody>
+            {this.state.contact.map((contact, index) => (
+              <tr key={index}>
                 <td>{contact.name}</td>
                 <td>{contact.email}</td>
                 <td>{contact.country}</td>
@@ -67,10 +74,20 @@ export default class Table extends Component {
                 <td>{contact.job}</td>
                 <tr>
                   <td>
-                    <button onClick={(e)=> this.handleClickDelete(e,contact.id)} className="btn__1 uil uil-trash">Delete</button>
+                    <button
+                      onClick={(e) => this.handleClickDelete(e, contact.id)}
+                      className="btn__1 uil uil-trash"
+                    >
+                      Delete
+                    </button>
                   </td>
                   <td>
-                    <button className="btn__2 uil uil-edit">Edit</button>
+                    <Link
+                      to={`/edit/${contact.id}`}
+                      className="btn__2 uil uil-edit"
+                    >
+                      Edit{" "}
+                    </Link>
                   </td>
                   <td>
                     <button className="btn__3 uil uil-eye">View</button>
@@ -78,9 +95,10 @@ export default class Table extends Component {
                 </tr>
               </tr>
             ))}
-          
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+        <Modale />
+      </div>
     );
   }
 }

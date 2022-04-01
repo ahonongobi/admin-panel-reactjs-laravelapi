@@ -6,9 +6,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-.body{
-    background-color: #000 !important;
-}
+
 :root{
     /* ===== Colors ===== */
     --primary-color: #0E4BF1;
@@ -34,6 +32,7 @@ html,body, section{
     max-width: 100%;
     overflow-x: hidden;
 }
+
 body.dark{
     --primary-color: #3A3B3C;
     --panel-color: #242526;
@@ -429,10 +428,14 @@ nav.close ~ .dashboard .top{
     white-space: nowrap;
     color: var(--text-color);
 }
-
+.modalClass {  
+    text-align: center;  
+    margin-top: 100px;  
+  }  
+  
 @media (max-width: 1000px) {
     nav{
-        width: 73px;
+        width: 73px ;
     }
     .dashboard{
         width: 85% !important;
@@ -497,11 +500,19 @@ nav.close ~ .dashboard .top{
 }
 
 table { 
-	width: 100%; 
+	width: 100% !important; 
 	border-collapse: collapse; 
 	margin:50px auto;
+    
+    overflow: scroll;
+    white-space: nowrap;
+    
 	}
-
+    .wrap-table{
+        width: 90%;
+        overflow: auto;
+    }
+ 
 /* Zebra striping */
 tr:nth-of-type(odd) { 
 	background: #eee; 
@@ -571,4 +582,27 @@ only screen and (max-width: 760px),
 		font-weight: bold;
 	}
 
+}
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#3498db;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+.btn__save{
+    background-color: #4da3ff !important;
+    border: none !important;
+}
+.btn__close{
+    background-color:  red !important;
+    border: none !important;
+}
+.my-float{
+	margin-top:22px;
 }

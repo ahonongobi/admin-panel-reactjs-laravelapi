@@ -5,7 +5,7 @@ export default class Sidebar extends Component {
   render() {
     return (
         <div>
-        <nav>
+        <nav className='nav'>
           <div className="logo-name">
             <div className="logo-image"></div>
   
