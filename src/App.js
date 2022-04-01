@@ -12,10 +12,12 @@ import Edit from './Components/Edit';
 import Login from './Components/Login';
 import WithoutNav from './Components/WithoutNav';
 import WithNav from './Components/WithNav';
+import ProtectedRoute from './Components/ProtectedRoute';
 
 function App({props}) {
-  const isOk = true;
+  const isLoggedIn = localStorage.getItem('isOk')
   const removeisOk = localStorage.removeItem('isOk');
+  console.log(isLoggedIn);
   return (
     <div>
        {/**<Router>
@@ -34,12 +36,17 @@ function App({props}) {
   </Router> **/}
   <Router>
       <Routes>
-        <Route element={<WithoutNav />}>
+      <Route element={<WithoutNav />}>
           <Route path="/login" element={<Login />} />
-        </Route>
+        </Route> 
+        
         <Route element={<WithNav />}>
+          <Route element={<ProtectedRoute />}>
           <Route path="/" element={<List />} />
-        </Route>
+          <Route  path="/add" element={<Content />} />
+          <Route  path="/edit/:id" element={<Edit />} />
+          </Route>
+        </Route> 
       </Routes>
   </Router>
       

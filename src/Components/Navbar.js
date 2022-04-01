@@ -14,10 +14,10 @@ export default function () {
         <div className="menu-items">
           <ul className="nav-links">
             <li>
-              <a href="#">
+              <Link to={'/'}>
                 <i className="uil uil-estate"></i>
                 <span className="link-name">Dahsboard</span>
-              </a>
+              </Link>
             </li>
             <li>
               <Link to="/add">

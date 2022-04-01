@@ -16,9 +16,7 @@ class Login extends Component {
         
         
     }
-    componentDidMount(){
-        localStorage.clear();
-    }
+    
     async handleFormSubmit(e) {
         e.preventDefault();
        
@@ -60,7 +58,7 @@ class Login extends Component {
             {state: {email: this.state.email}},
         )
         localStorage.setItem('email', this.state.email);
-        localStorage.setItem('isOk', true);
+        localStorage.setItem('token', true);
         console.log(this.state.email);
    }
    
