@@ -90,7 +90,8 @@ export default class Table extends Component {
                     </Link>
                   </td>
                   <td>
-                    <button className="btn__3 uil uil-eye">View</button>
+                    <Link to={`/view/${contact.id}`} className="btn__3 uil uil-eye">View</Link>
+                   
                   </td>
                 </tr>
               </tr>

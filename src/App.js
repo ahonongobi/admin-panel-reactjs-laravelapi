@@ -13,6 +13,7 @@ import Login from './Components/Login';
 import WithoutNav from './Components/WithoutNav';
 import WithNav from './Components/WithNav';
 import ProtectedRoute from './Components/ProtectedRoute';
+import View from './Components/View';
 
 function App({props}) {
   
@@ -43,6 +44,7 @@ function App({props}) {
           <Route path="/" element={<List />} />
           <Route  path="/add" element={<Content />} />
           <Route  path="/edit/:id" element={<Edit />} />
+          <Route path="/view/:id" element={<View />} />
           </Route>
         </Route> 
       </Routes>
