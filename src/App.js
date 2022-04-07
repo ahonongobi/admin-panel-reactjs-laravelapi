@@ -14,6 +14,7 @@ import WithoutNav from './Components/WithoutNav';
 import WithNav from './Components/WithNav';
 import ProtectedRoute from './Components/ProtectedRoute';
 import View from './Components/View';
+import Parent from './Components/Parent';
 
 function App({props}) {
   
@@ -45,6 +46,7 @@ function App({props}) {
           <Route  path="/add" element={<Content />} />
           <Route  path="/edit/:id" element={<Edit />} />
           <Route path="/view/:id" element={<View />} />
+          <Route path="/parents" element={<Parent />} />
           </Route>
         </Route> 
       </Routes>

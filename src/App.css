@@ -327,6 +327,9 @@ nav.close ~ .dashboard .top{
     cursor: pointer;
     
  }
+ .menu-items ul li  i{
+     color: #3498db;
+ }
 .btn {
     box-sizing: border-box;
     -webkit-appearance: none;
@@ -611,4 +614,43 @@ only screen and (max-width: 760px),
 .my-float{
 	margin-top:22px;
 }
+/**#page-numbers {
+    list-style: none;
+    display: flex;
+  }
+  
+  #page-numbers > li {
+    margin-right: 0.3em;
+    color: blue;
+    user-select: none;
+    cursor: pointer;
+  } **/
+  .pagination{
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+  }
+  #page-numbers > li{
+    display: inline !important;
+    text-align: center !important;
+  }
 
+  .pagination a{
+    float: left;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px 12px;
+    color: #fff;
+    margin-left: -1px;
+    border: 1px solid transparent;
+    line-height: 1.5;
+    background-color: #4DA3FF;
+    margin: 10px;
+   
+  }
+  .diseabled_{
+      margin-top: 50% !important;
+  }
+  

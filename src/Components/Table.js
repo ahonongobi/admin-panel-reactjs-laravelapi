@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import Modale from "./Modal";
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 toast.configure();
 
 export default class Table extends Component {
@@ -17,9 +18,9 @@ export default class Table extends Component {
   }
   componentDidMount() {
     this.getApiData();
-     {/**this.intervale = setInterval(() => {
+     this.intervale = setInterval(() => {
           this.getApiData()
-      }, 1000);  **/}
+      }, 1000); 
   }
   componentWillUnmount() {
     clearInterval(this.intervale);
@@ -65,7 +66,8 @@ export default class Table extends Component {
           </thead>
 
           <tbody>
-            {this.state.contact.map((contact, index) => (
+            {this.state.contact.map((contact, index)  => (
+             
               <tr key={index}>
                 <td>{contact.name}</td>
                 <td>{contact.email}</td>
@@ -93,11 +95,17 @@ export default class Table extends Component {
                     <Link to={`/view/${contact.id}`} className="btn__3 uil uil-eye">View</Link>
                    
                   </td>
+                  
                 </tr>
               </tr>
             ))}
+            
           </tbody>
+          
         </table>
+        {this.state.contact.length === 0 ? <h2 className="section-title">
+                <Skeleton duration={1} count={6} height={30} width='100%' />
+              </h2> : null}
         <Modale />
       </div>
     );

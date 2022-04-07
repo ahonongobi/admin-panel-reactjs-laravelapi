@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import BookData from "./Data.json"
+import Profile from "../Images/avatar-1.jpg"
 export default function header() {
   return (
     <div>
@@ -13,7 +14,7 @@ export default function header() {
           {/**<input type="text" placeholder="Search here..." />**/}
         </div>
 
-        <img src="images/profile.jpg" alt=""  />
+        <img src={Profile} />
       </div>
     </div>
   );

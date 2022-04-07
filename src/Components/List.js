@@ -3,6 +3,7 @@ import Activity from "./Activity";
 import Card from "./Card";
 import Table from "./Table";
 import Header from "./header"
+import TopLoadingBar from "./TopLoadingBar";
 /*export default class List extends Component {
   render() {
     const {email} = (this.props.location && this.props.location.state)|| {}
@@ -30,6 +31,7 @@ const List = (props) =>(
         <Header />
 
         <div className="dash-content">
+          <TopLoadingBar />
            {/**<span>{localStorage.getItem('email') && (
             <div>
                Email: <p>{localStorage.getItem('email')}</p>

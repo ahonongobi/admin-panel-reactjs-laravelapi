@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
-
+import {Link} from 'react-router-dom';
  function SearchBar({ placeholder, key }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -53,9 +53,9 @@ import CloseIcon from "@material-ui/icons/Close";
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
-              <a className="dataItem" href={value.id} target="_blank">
+              <Link className="dataItem" to={`/view/${value.id}`}>
                 <p>{value.name} </p>
-              </a>
+              </Link>
             );
           })}
         </div>

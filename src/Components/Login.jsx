@@ -4,6 +4,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoadingBar from 'react-top-loading-bar'
 
 class Login extends Component {
     constructor(props){
@@ -13,10 +14,12 @@ class Login extends Component {
             password:"",
             keep: "",
             isOK: false,
+            progress:0,
         }
         
         
     }
+    
     
     async handleFormSubmit(e) {
         e.preventDefault();
@@ -44,6 +47,7 @@ class Login extends Component {
           this.setState({
             inputMsg: res.data.errorMessages
           });
+          this.charging()
           toast.warning("E-mail or Password incorrect");
           document.getElementById("submit").innerText = "Sign In";
           document.getElementById("submit").disabled = false;
@@ -64,12 +68,24 @@ class Login extends Component {
         localStorage.setItem('token', true);
         console.log(this.state.email);
    }
-   
+   charging = ()=>{
+       setInterval(() => {
+        this.setState({progress: 100})
+       }, 2000);
+    
+   }
   render() {
       
     return (
         <div className="login-wrap mt-5">
-            
+        <LoadingBar
+        color='#f11946'
+        fontSize='500px'
+        progress={this.state.progress}
+        onLoaderFinished={() => this.setState({
+            progress:0,
+        })}
+      />
         
         <div className="login-html">
             <input id="tab-1" type="radio" name="tab" className="sign-in" checked /><label for="tab-1" className="tab">Sign In</label>

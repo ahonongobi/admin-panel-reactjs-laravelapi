@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import Logo from "../Images/logo.jpg";
 toast.configure();
 
 export default function () {
@@ -20,9 +20,11 @@ export default function () {
     <div>
       <nav>
         <div className="logo-name">
-          <div className="logo-image"></div>
+          <div className="logo-image">
+            
+          </div>
 
-          <span className="logo_name">CodingLab</span>
+          <span className="logo_name"><img src={Logo} width="100" height="80" alt="logo" /></span>
         </div>
 
         <div className="menu-items">
@@ -35,8 +37,8 @@ export default function () {
             </li>
             <li>
               <Link to="/add">
-                <i className="uil uil-files-landscapes"></i>
-                <span className="link-name">Content</span>
+                <i className="uil uil-user-arrows"></i>
+                <span className="link-name">Users</span>
               </Link>
             </li>
             <li>
@@ -47,20 +49,63 @@ export default function () {
             </li>
             <li>
               <a href="#">
-                <i className="uil uil-thumbs-up"></i>
-                <span className="link-name">Like</span>
+                <i className="uil uil-laptop-cloud"></i>
+                <span className="link-name">Online course</span>
               </a>
             </li>
             <li>
               <a href="#">
                 <i className="uil uil-comments"></i>
-                <span className="link-name">Comment</span>
+                <span className="link-name">Message</span>
+              </a>
+            </li>
+            <li>
+              <Link to={'parents'}>
+                <i className="uil uil-user"></i>
+                <span className="link-user">Parent</span>
+              </Link>
+            </li>
+            <li>
+              <a href="#">
+                <i className="uil uil-users-alt"></i>
+                <span className="link-name">Teachers</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i className="uil uil-book-reader"></i>
+                <span className="link-name">Students</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                <i className="uil uil-moneybag"></i>
+                <span className="link-name">Office accounting</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i className="uil uil-bell"></i>
+                <span className="link-name">Notify Students</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i className="uil uil-video"></i>
+                <span className="link-name">Zoom Meetings </span>
+              </a>
+            </li> 
+            <li>
+              <a href="#">
+                <i className="uil uil-file-graph"></i>
+                <span className="link-name">Report card</span>
               </a>
             </li>
             <li>
               <a href="#">
                 <i className="uil uil-share"></i>
-                <span className="link-name">Share</span>
+                <span className="link-name">Repport</span>
               </a>
             </li>
           </ul>

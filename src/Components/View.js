@@ -1,13 +1,57 @@
 import React, { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card, Modal } from "react-bootstrap";
 import Header from "./header";
 import Table from "./Table";
 import "./view.css";
+import MailModal from "./MailModal"
 export default class View extends Component {
+  constructor(){  
+    super();  
+    this.state={  
+      show:false  
+    }  
+  }  
+  handleModal(){  
+    this.setState({show:!this.state.show})  
+  } 
   render() {
     return (
       <section className="dashboard col-md-12">
         <Header />
+        <div>  
+        <h2 align='center'>E-mail notification</h2>  
+        <Modal show={this.state.show} onHide={()=>this.handleModal()}>  
+          <Modal.Header closeButton>E-mail notification</Modal.Header>  
+          <Modal.Body>
+            <form>
+            <div className="form-group mt-3">
+                <input
+                  className="form-control"
+                  type="text"
+                  name="subject"
+                  
+                  placeholder="Enter subject"
+                />
+                <span className="text-danger"></span>
+            </div>
+            <div className="form-group mt-3">
+                <textarea
+                  className="form-control"
+                  type="text"
+                  name="message"
+                  
+                  placeholder="Enter Message"
+                />
+                <span className="text-danger"></span>
+            </div>
+            </form>
+          </Modal.Body>  
+          <Modal.Footer>  
+            <Button className="btn__close" onClick={()=>this.handleModal()}>Close</Button>  
+            <Button className='btn__save' onClick={()=>this.handleModal()}>Send message</Button>  
+          </Modal.Footer>  
+        </Modal>  
+      </div>  
         <div className="dash-content">
           <div className="container bootstrap snippet">
             <div className="row">
@@ -223,9 +267,9 @@ export default class View extends Component {
                           <button class="btn btn-lg btn-danger" type="submit">
                             <i class="fa fa-times"></i> Delete
                           </button>
-                          <button id="restbtn" class="btn btn-lg" type="reset">
+                          <a id="restbtn" class="btn btn-lg" onClick={()=>this.handleModal()}>
                             <i class="uil uil-refresh"></i> E-mail notification
-                          </button>
+                          </a>
                         </div>
                       </div>
                     </form>
@@ -240,6 +284,7 @@ export default class View extends Component {
           </div>
           <Table />
         </div>
+        
       </section>
     );
   }
